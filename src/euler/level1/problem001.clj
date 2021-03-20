@@ -4,24 +4,24 @@
 (defn divisible-by [numerator denominator]
   (= 0 (mod numerator denominator)))
 
-; True if value is divisible by an item in multiples
-(defn multiple-of [value multiples]
+; True if value is divisible by an item in divisors
+(defn multiple-of [value divisors]
   (some true?
     (map
       #(divisible-by value %)
-      multiples)))
+      divisors)))
 
 ; Returns all values less than maxValue
-; Thar are divisible by something in multiples
-(defn get-multiples [maxValue multiples]
+; That are divisible by something in divisors
+(defn get-multiples [maxValue divisors]
   (filter
-    #(multiple-of % multiples)
+    #(multiple-of % divisors)
     (range maxValue)))
 
 ; Returns the sum of all values less than maxValues
-; that are divisible by multiples
-(defn sum-of-multiples [maxValue multiples]
-  (reduce + (get-multiples maxValue multiples)))
+; that are divisible by something in divisors
+(defn sum-of-multiples [maxValue divisors]
+  (reduce + (get-multiples maxValue divisors)))
 
 (defn euler-1 [n]
   (sum-of-multiples n [3 5]))
