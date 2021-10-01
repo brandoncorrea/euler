@@ -1,36 +1,24 @@
 (ns euler.level1.problem002)
 
-; Google search revealed a simplified way of
-; generating the fibonacci sequence
-; 
-; However, this doesn't seem to work well
-; with the filter function because it will
-; filter out values to infinity.
-(defn fib []
-  (map first (iterate (fn [[a b]] [b (+' a b)]) [0 1])))
+; Invalid entries will create a new sequence
+(defn- start-of-sequence? [prev cur]
+  (or (>= 0 prev)
+      (>= prev cur)))
 
-; Returns the fibonacci sequence where
-; the term values are less than maxValue
-(defn fibonacci [maxValue]
-  (loop
-    [prev-2 0
-     prev-1 1
-     terms '(0 1)]
-    (if (< maxValue (+ prev-1 prev-2))
-      terms
-      (recur
-        prev-1                         ; prev-2
-        (+ prev-1 prev-2)              ; prev-1
-        (conj terms (+ prev-1 prev-2)) ; terms
-      ))))
+(defn fibs
+  ([] (fibs 1 2))
+  ([prev cur]
+    (if (start-of-sequence? prev cur)
+        (fibs 1 2)
+        (concat [prev]
+          (lazy-seq
+            (fibs cur (+ prev cur)))))))
 
-; Returns the fibonacci sequence where
-; term values are both even and less than maxValue
-(defn get-even-fibonacci [maxValue]
-  (filter even? (fibonacci maxValue)))
+(defn even-fibs []
+  (filter even? (fibs)))
 
-; Returns the sum of all even numbered
-; terms of the fibonacci sequence,
-; where the terms are less than n
+(defn even-fibs-less-than [n]
+  (take-while #(< % n) (even-fibs)))
+
 (defn euler-2 [n]
-  (reduce + (get-even-fibonacci n)))
+  (reduce + (even-fibs-less-than (inc n))))
