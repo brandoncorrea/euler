@@ -11,4 +11,3 @@
       (should= 6857 (euler-3 600851475143)))
   )
 
-(run-specs)
