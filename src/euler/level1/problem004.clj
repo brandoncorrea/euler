@@ -1,65 +1,30 @@
 (ns euler.level1.problem004)
 
-; Returns the square of num
-(defn square [num]
-  (* num num))
+(defn- split-num [n]
+  (clojure.string/split (str n) #""))
 
-; Returns the exponential operation, num ^ power
-(defn exp [num power]
-  (reduce * (repeat power num)))
+(defn palindrome? [n]
+  (let [chars (split-num n)]
+    (= chars (reverse chars))))
 
-; Converts the value to a string
-; and returns the char array
-; of the resulting string
-(defn char-seq [value]
-  (seq (char-array (str value))))
+(defn- max-palindrome [old new]
+  (if (and (palindrome? new) (> new old))
+    new old))
 
-; Returns true if num is palindromic
-(defn is-palindromic [num]
-  (= (char-seq num) (reverse (char-seq num))))
+(defn max-palindrome-of-multiples-between [min max]
+  (loop [operand-1 max
+         operand-2 max
+         cur-pali -1]
+    (let [product (* operand-1 operand-2)]
+      (cond
+        (< operand-1 min)
+          cur-pali
+        (< operand-2 min)
+          (recur (dec operand-1) (dec operand-1) cur-pali)
+        :else
+          (recur operand-1 (dec operand-2) (max-palindrome cur-pali product))))))
 
-; The minimum value of the product operand
-; being num-digits in length
-(defn get-min-operand [num-digits]
-  (exp 10 (dec num-digits)))
-
-; The maximum value of the product operand
-; being num-digits in length
-(defn get-max-operand [num-digits]
-  (dec (exp 10 num-digits)))
-
-; Returns the maximum palindrome
-; that can be made from the product of
-; two numbers between min-operand and max-operand
-(defn max-palindrome [min-operand max-operand]
-  (loop
-    [primary max-operand
-     secondary max-operand
-     max -1]
-    (cond
-      ; Base case
-      (or
-        (< primary min-operand)
-        (< (square primary) max))
-      max
-      ; Update primary
-      (< secondary min-operand)
-        (recur (dec primary) max-operand max)
-      ; Update max, go to next primary
-      (and
-        (is-palindromic (* primary secondary))
-        (> (* primary secondary) max))
-        (recur (dec primary) max-operand (* primary secondary))
-      ; Update secondary
-      :else
-        (recur primary (dec secondary) max)
-      ))
-  )
-
-; Returns the largest palindrome
-; made from the product of two numbers,
-; both having n digits
 (defn euler-4 [n]
-  (max-palindrome
-    (get-min-operand n)
-    (get-max-operand n)))
+  (let [min-multiplier (int (Math/pow 10 (dec n)))
+        max-multiplier (int (Math/pow 10 n))]
+    (max-palindrome-of-multiples-between min-multiplier max-multiplier)))
