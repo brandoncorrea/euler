@@ -6,3 +6,8 @@
 
 (defn sum [nums]
   (reduce + nums))
+
+(defn abs [n]
+  (if (< n 0)
+    (* -1 n)
+    n))

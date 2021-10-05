@@ -30,3 +30,15 @@
     (should= 31 (sum [5 1 0 3 22])))
   (it "Adds numbers in vector with negatives"
     (should= 20 (sum [5 3 -4 2 20 -6]))))
+
+(describe "abs"
+  (it "Absolute value of zero is zero"
+    (should= 0 (abs 0)))
+  (it "Absolute value of one is one"
+    (should= 1 (abs 1)))
+  (it "Absolute value of negative one is one"
+    (should= 1 (abs -1)))
+  (it "Absolute value of negative two is two"
+    (should= 2 (abs -2)))
+  (it "Absolute value of two is two"
+    (should= 2 (abs 2))))
