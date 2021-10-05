@@ -1,9 +1,5 @@
-(ns euler.level1.problem009)
-
-(defn- square [n] (* n n))
-(defn- sum [nums] (reduce + nums))
-(defn- product [nums] (reduce * nums))
-(defn- sum-squares [& nums] (->> nums (map square) sum))
+(ns euler.level1.problem009
+  (:use [euler.util.math :only [square sum product sum-squares]]))
 
 (defn triplet? [a b c]
   (and (< a b)
