@@ -42,3 +42,15 @@
     (should= 2 (abs -2)))
   (it "Absolute value of two is two"
     (should= 2 (abs 2))))
+
+(describe "square"
+  (it "Square of zero is zero"
+    (should= 0 (square 0)))
+  (it "Square of one is one"
+    (should= 1 (square 1)))
+  (it "Square of negative one is one"
+    (should= 1 (square -1)))
+  (it "Square of two is four"
+    (should= 4 (square 2)))
+  (it "Square of negative two is four"
+    (should= 4 (square -2))))

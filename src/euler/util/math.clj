@@ -7,6 +7,9 @@
 (defn sum [nums]
   (reduce + nums))
 
+(defn square [n]
+  (* n n))
+
 (defn abs [n]
   (if (< n 0)
     (* -1 n)
