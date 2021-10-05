@@ -1,7 +1,6 @@
 (ns euler.util.math_spec
-  (:use
-    [speclj.core]
-    [euler.util.math]))
+  (:use [speclj.core]
+        [euler.util.math]))
 
 (describe "divisible-by?"
   (it "nothing is divisible by 0"
@@ -77,7 +76,11 @@
   (it "sum of squares of 0 1 and 2 result in 5"
     (should= 5 (sum-squares [0 1 2])))
   (it "range of 11 results in 385"
-    (should= 385 (sum-squares (range 11)))))
+    (should= 385 (sum-squares (range 11))))
+  (it "Accepts rest parameters of numbers"
+    (should= 14 (sum-squares 1 2 3)))
+  (it "Accepts arrays and numeric parameters"
+    (should= 30 (sum-squares [1 [2 3] [4]]))))
 
 (describe "square-sum"
   (it "Empty list results in 0"

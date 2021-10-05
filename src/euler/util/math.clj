@@ -3,7 +3,8 @@
 (defn sum [nums] (reduce + nums))
 (defn product [nums] (reduce * nums))
 (defn square [n] (* n n))
-(defn sum-squares [nums] (sum (map square nums)))
+(defn sum-squares [& nums]
+  (sum (map square (flatten nums))))
 (def square-sum (comp square sum))
 
 (defn divisible-by? [num div]
