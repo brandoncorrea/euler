@@ -1,21 +1,15 @@
-(ns euler.level1.problem005)
-
-(defn divisible-by? [num div]
-  (and (not= 0 div)
-       (= 0 (mod num div))))
-
-(defn- out-of-range? [coll index]
-  (or (< index 0)
-      (>= index (count coll))))
+(ns euler.level1.problem005
+  (:use [euler.util.math :only [divisible-by?]]
+        [euler.util.sequences :only [prime-factors]]))
 
 (defn remove-index [coll index]
-  (let [; subvec doesn't like lazy-seq
-        coll-vec (vec coll)]
-    (if (out-of-range? coll-vec index)
-      coll-vec
+  ; subvec doesn't like lazy-seq
+  (let [coll-vec (vec coll)]
+    (if (get coll-vec index)
       (concat
         (subvec coll-vec 0 index)
-        (subvec coll-vec (inc index))))))
+        (subvec coll-vec (inc index)))
+      coll-vec)))
 
 (defn remove-item [coll element]
   (remove-index coll (.indexOf coll element)))
@@ -30,24 +24,12 @@
         (recur (rest left) right (conj diff factor)))
       diff)))
 
-(defn factors-of [n]
-  (loop [remainder n
-         divisor 2
-         factors [1]]
-    (cond
-      (> divisor remainder)
-        factors
-      (divisible-by? remainder divisor)
-        (recur (/ remainder divisor) divisor (conj factors divisor))
-      :else
-        (recur remainder (inc divisor) factors))))
-
 (defn euler-5 [n]
   (loop [divisor n
          product n]
     (if (<= divisor 1)
       product
-      (let [cur-factors (factors-of divisor)
-            product-factors (factors-of product)
+      (let [cur-factors (prime-factors divisor)
+            product-factors (prime-factors product)
             diff-factors (vector-diff cur-factors product-factors)]
           (recur (dec divisor) (* product (reduce * diff-factors)))))))

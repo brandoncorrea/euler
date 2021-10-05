@@ -7,24 +7,6 @@
 
 (describe "Euler Problem #5"
 
-  (it "divisible-by?"
-    (should= true (divisible-by? 0 1))
-    (should= true (divisible-by? 0 2))
-    (should= true (divisible-by? 4 2))
-    (should= false (divisible-by? 1 0))
-    (should= false (divisible-by? 1 2)))
-
-  (it "factors-of"
-    (should= [1] (factors-of 1))
-    (should= [1 2] (factors-of 2))
-    (should= [1 3] (factors-of 3))
-    (should= [1 2 2] (factors-of 4))
-    (should= [1 5] (factors-of 5))
-    (should= [1 2 3] (factors-of 6))
-    (should= [1 2 2 5] (factors-of 20))
-    (should= [1 2 2 3 5] (factors-of 60))
-    (should= [1 2 2 5 5] (factors-of 100)))
-
   (it "remove-index"
     (should= [] (remove-index [1] 0))
     (should= [] (remove-index [] -1))
@@ -58,13 +40,13 @@
     (should= [1 5] (vector-diff [1 2 3 5] [2 3 4]))
     (should= [1 1 5] (vector-diff [1 1 2 3 5] [2 3 4]))
     (should= [1 5] (vector-diff [1 1 2 3 5] [1 2 3 4]))
+    (should= [5] (vector-diff [1 5] [1 2 3]))
+    (should= [2] (vector-diff [1 2 2] [1 2 3 5]))
+    (should= [] (vector-diff [1 3] [1 2 2 3 5]))
     (should= [] (vector-diff [1 2 3] [1 2 3]))
-    (should= [5] (vector-diff (factors-of 5) (factors-of 6)))
-    (should= [2] (vector-diff (factors-of 4) (factors-of 30)))
-    (should= [] (vector-diff (factors-of 3) (factors-of 60)))
-    (should= [] (vector-diff (factors-of 2) (factors-of 6)))
-    (should= [] (vector-diff (factors-of 1) (factors-of 6)))
-    (should= [] (vector-diff (factors-of 0) (factors-of 6))))
+    (should= [] (vector-diff [1 2] [1 2 3]))
+    (should= [] (vector-diff [1] [1 2 3]))
+    (should= [] (vector-diff [] [1 2 3])))
 
   (it "Solves #5"
     (should= 1 (euler-5 1))
