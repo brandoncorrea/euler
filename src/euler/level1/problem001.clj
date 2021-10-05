@@ -1,12 +1,13 @@
-(ns euler.level1.problem001)
+(ns euler.level1.problem001
+  (:use [euler.util.math :only [divisible-by? sum]]))
 
 (defn divisible-by-3-or-5? [n]
-      (or
-        (= 0 (mod n 3))
-        (= 0 (mod n 5))))
+  (or
+    (divisible-by? n 3)
+    (divisible-by? n 5)))
 
 (defn desired-numbers-less-than [n]
-      (filter divisible-by-3-or-5? (range 1 n)))
+  (filter divisible-by-3-or-5? (range 1 n)))
 
-(defn euler-1 [n]
-      (reduce + (desired-numbers-less-than n)))
+(def euler-1
+  (comp sum desired-numbers-less-than))
