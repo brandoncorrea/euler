@@ -1,4 +1,5 @@
-(ns euler.level1.problem008)
+(ns euler.level1.problem008
+  (:use [euler.util.math :only [product]]))
 
 (def big-number
   (str
@@ -26,11 +27,11 @@
 (defn ->intvec [s]
   (map #(Integer. %) (clojure.string/split s #"")))
 
-(defn- product [nums]
-  (reduce * nums))
-
 (defn part-ints [size text]
   (partition size 1 (->intvec text)))
 
 (defn euler-8 [n]
-  (apply max (map product (part-ints n big-number))))
+  (->> big-number
+       (part-ints n)
+       (map product)
+       (apply max)))
