@@ -1,10 +1,5 @@
-(ns euler.level1.problem006)
-
-(defn square [n]
-  (* n n))
-
-(defn sum [nums]
-  (reduce + nums))
+(ns euler.level1.problem006
+  (:use [euler.util.math :only [sum square]]))
 
 (defn square-sum [nums]
   (sum (map square nums)))

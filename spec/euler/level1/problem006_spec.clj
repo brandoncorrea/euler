@@ -7,17 +7,6 @@
 
 (describe "Euler Problem #6"
 
-  (it "square"
-    (should= 0 (square 0))
-    (should= 1 (square 1))
-    (should= 4 (square 2)))
-
-  (it "sum"
-    (should= 0 (sum []))
-    (should= 0 (sum [0]))
-    (should= 1 (sum [1]))
-    (should= 6 (sum [1 2 3])))
-
   (it "square-sum"
     (should= 0 (square-sum (range 0)))
     (should= 0 (square-sum (range 1)))
