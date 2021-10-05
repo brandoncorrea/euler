@@ -66,3 +66,29 @@
     (should= 6 (product [1 2 3])))
   (it "Product of -1 2 3 is -6"
     (should= -6 (product [-1 2 3]))))
+
+(describe "sum-squares"
+  (it "Empty list results in 0"
+    (should= 0 (sum-squares [])))
+  (it "List of 0 results in 0"
+    (should= 0 (sum-squares [0])))
+  (it "List of 0 and 1 results in 1"
+    (should= 1 (sum-squares [0 1])))
+  (it "sum of squares of 0 1 and 2 result in 5"
+    (should= 5 (sum-squares [0 1 2])))
+  (it "range of 11 results in 385"
+    (should= 385 (sum-squares (range 11)))))
+
+(describe "square-sum"
+  (it "Empty list results in 0"
+    (should= 0 (square-sum [])))
+  (it "List of 0 results in 0"
+    (should= 0 (square-sum [0])))
+  (it "List of 0 and 1 results in 1"
+    (should= 1 (square-sum [0 1])))
+  (it "List of 1 and 2 results in 9"
+    (should= 9 (square-sum [1 2])))
+  (it "List of 2 3 adn 4 results in 36"
+    (should= 36 (square-sum (range 4))))
+  (it "Number 0 - 10 results in 3025"
+    (should= 3025 (square-sum (range 11)))))
