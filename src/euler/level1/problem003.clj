@@ -1,12 +1,5 @@
-(ns euler.level1.problem003)
-
-(defn- divisible-by? [num div]
-  (= 0 (mod num div)))
-
-(defn- abs [n]
-  (if (>= n 0)
-    n
-    (* -1 n)))
+(ns euler.level1.problem003
+  (:use [euler.util.math :only [divisible-by? abs]]))
 
 (defn euler-3 [n]
   (loop [num (abs n)
