@@ -54,3 +54,15 @@
     (should= 4 (square 2)))
   (it "Square of negative two is four"
     (should= 4 (square -2))))
+
+(describe "product"
+  (it "List containing zero is always zero"
+    (should= 0 (product [1 2 0 3 4])))
+  (it "Product of empty list is 1"
+    (should= 1 (product [])))
+  (it "Product of list of 1s is 1"
+    (should= 1 (product [1 1 1 1])))
+  (it "Product of 1 2 3 is 6"
+    (should= 6 (product [1 2 3])))
+  (it "Product of -1 2 3 is -6"
+    (should= -6 (product [-1 2 3]))))
