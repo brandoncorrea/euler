@@ -20,5 +20,12 @@
   (it "One and three are factors of three"
     (should= [1 3] (prime-factors 3)))
   (it "Sixty has factors: 1 2 2 3 5"
-    (should= [1 2 2 3 5] (prime-factors 60)))
-  )
+    (should= [1 2 2 3 5] (prime-factors 60))))
+
+(describe "primes"
+  (it "Returns sequence of primes"
+    (should= 2 (first primes))
+    (should= 3 (second primes))
+    (should= 5 (nth primes 2))
+    (should= 7 (nth primes 3))
+    (should= 11 (nth primes 4))))

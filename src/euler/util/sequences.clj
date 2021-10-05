@@ -6,7 +6,7 @@
 
 (def fibs (lazy-fibs 0 1))
 
-(defn- next-prime [remainder div]
+(defn- next-factor [remainder div]
   (loop [div div]
     (if (divisible-by? remainder div)
         div
@@ -18,6 +18,20 @@
   ([remainder div]
    (if (> div remainder)
      []
-     (let [factor (next-prime remainder div)]
+     (let [factor (next-factor remainder div)]
        (lazy-seq (cons factor
                        (prime-factors (/ remainder factor) div)))))))
+
+(defn- next-prime [seeds cur]
+  (loop [n cur]
+    (if (some #(divisible-by? n %) seeds)
+      (recur (inc n))
+      n)))
+
+(defn- lazy-primes [seeds cur]
+  (lazy-seq
+    (let [prime (next-prime seeds cur)]
+      (cons prime
+            (lazy-primes (conj seeds prime) (inc prime))))))
+
+(def primes (lazy-primes [] 2))
