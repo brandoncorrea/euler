@@ -24,14 +24,14 @@
 
 (defn- next-prime [seeds cur]
   (loop [n cur]
-    (if (some #(divisible-by? n %) seeds)
-      (recur (inc n))
+    (if (first (filter #(= 0 (rem n %)) seeds))
+      (recur (+ n 2))
       n)))
 
 (defn- lazy-primes [seeds cur]
   (lazy-seq
     (let [prime (next-prime seeds cur)]
       (cons prime
-            (lazy-primes (conj seeds prime) (inc prime))))))
+            (lazy-primes (conj seeds prime) (+ prime 2))))))
 
-(def primes (lazy-primes [] 2))
+(def primes (cons 2 (lazy-primes [2] 3)))
