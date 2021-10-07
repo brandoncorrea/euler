@@ -9,7 +9,7 @@
 
 (defn divisible-by? [num div]
   (and (not= 0 div)
-       (= 0 (mod num div))))
+       (= 0 (rem num div))))
 
 (defn abs [n]
   (if (< n 0)
