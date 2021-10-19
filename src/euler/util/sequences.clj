@@ -14,7 +14,7 @@
 
 (defn prime-factors
   ([remainder]
-   (cons 1 (prime-factors remainder 2)))
+   (prime-factors remainder 2))
   ([remainder div]
    (if (> div remainder)
      []

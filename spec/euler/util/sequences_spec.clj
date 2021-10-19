@@ -13,14 +13,17 @@
     (should= [0 1 1 2 3 5 8 13 21 34] (take 10 fibs))))
 
 (describe "prime-factors"
-  (it "One is the only factor of one"
-    (should= [1] (prime-factors 1)))
-  (it "One and two are factors of two"
-    (should= [1 2] (prime-factors 2)))
-  (it "One and three are factors of three"
-    (should= [1 3] (prime-factors 3)))
-  (it "Sixty has factors: 1 2 2 3 5"
-    (should= [1 2 2 3 5] (prime-factors 60))))
+  (it "One has no prime factors"
+    (should= [] (prime-factors 1)))
+  (it "Two is a factor of two"
+    (should= [2] (prime-factors 2)))
+  (it "Three is a prime factor of three"
+    (should= [3] (prime-factors 3)))
+  (it "Sixty has factors: 2 2 3 5"
+    (should= [2 2 3 5] (prime-factors 60)))
+  (it "Sixty has factors: 2 2 3 5"
+    (should= [2 2 2 3 3 5 7] (prime-factors 2520)))
+  )
 
 (describe "primes"
   (it "Returns sequence of primes"
