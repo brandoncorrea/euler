@@ -35,3 +35,10 @@
             (lazy-primes (conj seeds prime) (+ prime 2))))))
 
 (def primes (cons 2 (lazy-primes [2] 3)))
+
+(defn triangle-numbers
+  ([] (triangle-numbers 0 1))
+  ([prev n]
+   (let [next (+ prev n)]
+     (cons next
+           (lazy-seq (triangle-numbers next (inc n)))))))

@@ -7,13 +7,6 @@
 
 (describe "Euler Problem #12"
 
-  (it "combo-count"
-    (should= 0 (combo-count []))
-    (should= 1 (combo-count [1]))
-    (should= 3 (combo-count [1 1]))
-    (should= 7 (combo-count [1 1 1]))
-    (should= 5 (combo-count [1 2])))
-
   (it "count-factors"
     (should= 1 (count-factors 1))
     (should= 2 (count-factors 2))
@@ -27,12 +20,6 @@
     (should= 4 (count-factors 10))
     (should= 2 (count-factors 11))
     (should= 48 (count-factors 2520)))
-
-  (it "triangle-numbers"
-    (should= [] (take 0 (triangle-numbers 0 1)))
-    (should= [1] (take 1 (triangle-numbers 0 1)))
-    (should= [1 3] (take 2 (triangle-numbers 0 1)))
-    (should= [1 3 6] (take 3 (triangle-numbers 0 1))))
 
   (it "Solves #12"
     (should= 3 (euler-12 1))

@@ -32,3 +32,10 @@
     (should= 5 (nth primes 2))
     (should= 7 (nth primes 3))
     (should= 11 (nth primes 4))))
+
+(describe "triangle-numbers"
+  (it "Returns sequence of triangle numbers"
+    (should= [] (take 0 (triangle-numbers)))
+    (should= [1] (take 1 (triangle-numbers)))
+    (should= [1 3] (take 2 (triangle-numbers)))
+    (should= [1 3 6] (take 3 (triangle-numbers)))))
