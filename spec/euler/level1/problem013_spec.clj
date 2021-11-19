@@ -109,6 +109,7 @@
 
 (describe "Euler Problem #13"
   (it "Solves #13"
+    (should= 0 (euler-13 []))
     (should= 0 (euler-13 [0]))
     (should= 1 (euler-13 [1]))
     (should= 1234567890 (euler-13 [12345678901]))
