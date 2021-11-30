@@ -6,6 +6,7 @@
 (defn sum-squares [& nums]
   (sum (map square (flatten nums))))
 (def square-sum (comp square sum))
+(defn factorial [n] (apply * (map bigint (range 1 (inc n)))))
 
 (defn divisible-by? [num div]
   (and (not= 0 div)
