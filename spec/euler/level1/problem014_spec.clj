@@ -7,16 +7,13 @@
 
 (describe "Euler Problem #14"
 
-  (it "chain"
-    (should= [1] (chain 1))
-    (should= [2 1] (chain 2))
-    (should= [3 10 5 16 8 4 2 1] (chain 3))
-    (should= [4 2 1] (chain 4))
-    (should= [5 16 8 4 2 1] (chain 5))
-    (should= [6 3 10 5 16 8 4 2 1] (chain 6))
-    (should= [7 22 11 34 17 52 26 13 40 20 10 5 16 8 4 2 1] (chain 7))
-    (should= [8 4 2 1] (chain 8))
-    (should= [13 40 20 10 5 16 8 4 2 1] (chain 13)))
+  (it "count-links"
+    (should= 1 (count-links 1 {}))
+    (should= 2 (count-links 2 {}))
+    (should= 8 (count-links 3 {}))
+    (should= 3 (count-links 4 {}))
+    (should= 2 (count-links 7 {22 1}))
+    (should= 17 (count-links 7 {22 16})))
 
   (it "Solves #14"
     (should= 1 (euler-14 1))
@@ -27,7 +24,5 @@
     (should= 6 (euler-14 6))
     (should= 7 (euler-14 7))
     (should= 7 (euler-14 8))
-    (should= 837799 (euler-14 1000000))
-    )
-
-  )
+    (should= 2463 (euler-14 2500))
+    (should= 837799 (euler-14 1000000))))

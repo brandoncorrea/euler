@@ -5,27 +5,24 @@
     (/ n 2)
     (inc (* 3 n))))
 
-(defn- contains? [coll x]
-  (if (some #(= x %) coll)
-    true
-    false))
-
-(defn chain [n]
-  (if (= 1 n)
-    [n]
-    (lazy-seq (cons n (chain (next-link n))))))
-
-(defn- greatest [[_ longest-chain :as old-value] n]
-  (if (contains? longest-chain n)
-    old-value
-    (let [n-chain (chain n)]
-      (if (> (count n-chain) (count longest-chain))
-        [n n-chain]
-        old-value))))
+(defn count-links [n mappings]
+  (loop [link n
+         len 0]
+    (if (= 1 link)
+      (inc len)
+      (if-let [mapping-len (get mappings link)]
+        (+ len mapping-len)
+        (recur (next-link link) (inc len))))))
 
 (defn euler-14 [n]
-  (loop [n n
-         [longest-n _ :as max] [-1 []]]
-    (if (> 1 n)
-      longest-n
-      (recur (dec n) (greatest max n)))))
+  (loop [start-link 1
+         max-len 0
+         max-n 0
+         mappings {}]
+    (if (< n start-link)
+      max-n
+      (let [len (count-links start-link mappings)
+            mappings (assoc mappings start-link len)]
+        (if (> len max-len)
+          (recur (inc start-link) len start-link mappings)
+          (recur (inc start-link) max-len max-n mappings))))))
