@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Euler01.fs" />
+    <Compile Include="Euler02.fs" />
+    <Compile Include="Euler03.fs" />
+    <Compile Include="Euler04.fs" />
+  </ItemGroup>
+
+</Project>

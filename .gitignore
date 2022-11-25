@@ -8,3 +8,6 @@ pom.xml
 target
 .lein-repl-history
 .nrepl-port
+obj/
+bin/
+.vs/
