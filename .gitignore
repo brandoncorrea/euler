@@ -2,12 +2,13 @@
 *jar
 .idea
 classes
-lib
+clojure/lib
 out
 pom.xml
 target
 .lein-repl-history
 .nrepl-port
+Gemfile.lock
 obj/
 bin/
 .vs/
