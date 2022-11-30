@@ -4,6 +4,7 @@ end
 
 def euler_1(n)
   (0..n - 1)
+    .lazy
     .filter {|i| divisible_by_3_or_5(i) }
     .reduce(:+)
 end
