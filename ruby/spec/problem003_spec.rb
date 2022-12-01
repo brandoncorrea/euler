@@ -3,7 +3,7 @@ require 'problem003'
 # https://projecteuler.net/index.php?section=problems&id=3
 
 describe "Euler Problem #3" do
-  it "Solves #1" do
+  it "Solves #3" do
     expect(euler_3(-2)).to eq 2
     expect(euler_3(0)).to eq 1
     expect(euler_3(1)).to eq 1

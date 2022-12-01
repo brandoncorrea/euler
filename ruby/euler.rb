@@ -24,7 +24,7 @@ def create_spec_file(problem_number)
 # https://projecteuler.net/index.php?section=problems&id=#{problem_number}
 
 describe \"Euler Problem ##{problem_number}\" do
-  it \"Solves #1\" do
+  it \"Solves ##{problem_number}\" do
     expect(euler_#{problem_number}(1)).to eq 1
   end
 end
